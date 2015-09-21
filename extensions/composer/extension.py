@@ -165,7 +165,8 @@ class ComposerExtension(ExtensionHelper):
             'COMPOSER_INSTALL_OPTIONS': ['--no-interaction', '--no-dev'],
             'COMPOSER_VENDOR_DIR': '{BUILD_DIR}/{LIBDIR}/vendor',
             'COMPOSER_BIN_DIR': '{BUILD_DIR}/php/bin',
-            'COMPOSER_CACHE_DIR': '{CACHE_DIR}/composer'
+            'COMPOSER_CACHE_DIR': '{CACHE_DIR}/composer',
+            'COMPOSER_PHP_INI_SCAN_DIR': ''
         }
 
     def _should_compile(self):
@@ -337,6 +338,7 @@ class ComposerCommandRunner(object):
         env['COMPOSER_VENDOR_DIR'] = self._ctx['COMPOSER_VENDOR_DIR']
         env['COMPOSER_BIN_DIR'] = self._ctx['COMPOSER_BIN_DIR']
         env['COMPOSER_CACHE_DIR'] = self._ctx['COMPOSER_CACHE_DIR']
+        env['PHP_INI_SCAN_DIR'] = self._ctx['COMPOSER_PHP_INI_SCAN_DIR']
 
         # prevent key system variables from being overridden
         env['LD_LIBRARY_PATH'] = self._strategy.ld_library_path()
