@@ -351,7 +351,7 @@ class ComposerCommandRunner(object):
 
     def run(self, *args):
         try:
-            cmd = [self._php_path, self._composer_path]
+            cmd = [self._php_path, '-c /tmp/php.ini', self._composer_path]
             cmd.extend(args)
             self._log.debug("Running command [%s]", ' '.join(cmd))
             stream_output(sys.stdout,
@@ -373,7 +373,16 @@ class HHVMComposerStrategy(object):
             self._ctx['BUILD_DIR'], 'hhvm', 'usr', 'bin', 'hhvm')
 
     def write_config(self, builder):
-        pass
+        # rewrite a temp copy of php.ini for use by composer
+        (builder.copy()
+            .under('{BUILD_DIR}/hhvm/etc')
+            .where_name_is('php.ini')
+            .into('TMPDIR')
+         .done())
+        utils.rewrite_cfgs(os.path.join(self._ctx['TMPDIR'], 'php.ini'),
+                           {'TMPDIR': self._ctx['TMPDIR'],
+                            'HOME': self._ctx['BUILD_DIR']},
+                           delim='@')
 
     def ld_library_path(self):
         return os.path.join(
