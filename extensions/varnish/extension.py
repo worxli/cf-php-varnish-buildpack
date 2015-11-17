@@ -65,7 +65,7 @@ def service_commands(ctx):
                 '$HOME/varnish/sbin/varnishd',
                 '-F',
                 '-f $HOME/varnish/etc/varnish/default.vcl',
-                '-a 0.0.0.0:$VCAP_APP_PORT',
+                '-a 0.0.0.0:$PORT',
                 '-t 120',
                 '-w 50,1000,120',
                 '-s malloc,$VARNISH_MEMORY_LIMIT',
