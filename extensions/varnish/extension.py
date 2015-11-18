@@ -60,27 +60,30 @@ def preprocess_commands(ctx):
 
 def service_commands(ctx):
     
-    returnVal = {
-            'varnish': (
-                '$HOME/varnish/sbin/varnishd',
-                '-F',
-                '-f $HOME/varnish/etc/varnish/default.vcl',
-                '-a 0.0.0.0:$PORT',
-                '-t 120',
-                '-w 50,1000,120',
-                '-s malloc,$VARNISH_MEMORY_LIMIT',
-                '-T 127.0.0.1:6082',
-                '-p http_resp_hdr_len=32768'
-                '2>&1'
-                )
-             }
-    
-    if ('VARNISHNCSA' in ctx and ctx['VARNISHNCSA'] == "yes"): 
-        varnishncsa = ('sleep 5;', '$HOME/varnish/bin/varnishncsa')             
-        if 'VARNISHNCSA_OPTIONS' in ctx:            
-            varnishncsa += (ctx.get('VARNISHNCSA_OPTIONS', format=False),)                        
-        returnVal['varnishncsa'] = varnishncsa        
-    return returnVal
+    if ctx['CACHE_SERVER'] == 'varnish':
+        returnVal = {
+                'varnish': (
+                    '$HOME/varnish/sbin/varnishd',
+                    '-F',
+                    '-f $HOME/varnish/etc/varnish/default.vcl',
+                    '-a 0.0.0.0:$PORT',
+                    '-t 120',
+                    '-w 50,1000,120',
+                    '-s malloc,$VARNISH_MEMORY_LIMIT',
+                    '-T 127.0.0.1:6082',
+                    '-p http_resp_hdr_len=32768'
+                    '2>&1'
+                    )
+                 }
+        
+        if ('VARNISHNCSA' in ctx and ctx['VARNISHNCSA'] == "yes"): 
+            varnishncsa = ('sleep 5;', '$HOME/varnish/bin/varnishncsa')             
+            if 'VARNISHNCSA_OPTIONS' in ctx:            
+                varnishncsa += (ctx.get('VARNISHNCSA_OPTIONS', format=False),)                        
+            returnVal['varnishncsa'] = varnishncsa        
+        return returnVal
+    else:
+        return {}
 
 
 def service_environment(ctx):
