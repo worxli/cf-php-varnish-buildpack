@@ -54,8 +54,11 @@ class VarnishInstaller(object):
         
 
 def preprocess_commands(ctx):
-    return (('mkdir', '/home/vcap/tmp/varnish/'),
-        ('$HOME/.bp/bin/rewrite', '"$HOME/varnish/etc/varnish"'))
+    if ctx['CACHE_SERVER'] == 'varnish':
+        return (('mkdir', '/home/vcap/tmp/varnish/'),
+            ('$HOME/.bp/bin/rewrite', '"$HOME/varnish/etc/varnish"'))
+    else:
+        return ()
 
 
 def service_commands(ctx):
