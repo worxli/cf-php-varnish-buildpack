@@ -75,7 +75,7 @@ dependencies:
     modules: ["bz2", "curl", "dba", "exif", "fileinfo", "ftp", "gd", "gettext", "gmp", "imap", "ldap", "mbstring", "mcrypt", "mysql", "mysqli", "opcache", "openssl", "pcntl", "pdo", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "pspell", "readline", "snmp", "soap", "sockets", "xsl", "zip", "zlib", "intl", "igbinary", "imagick", "mailparse", "memcache", "mongo", "msgpack", "protocolbuffers", "redis", "sundown", "xdebug", "yaf", "amqp", "lua", "phpiredis", "protobuf", "phalcon", "suhosin", "twig", "xcache", "xhprof", "memcached", "ioncube"]
     cf_stacks:
       - cflinuxfs2
-    md5: 5d5efb37af00ecd966e76330ee78c18e
+    md5: e283e8759d44f567d941713e9c88d1cc
   - name: nginx
     version: 1.8.0
     uri: https://pivotal-buildpacks.s3.amazonaws.com/concourse-binaries/nginx/nginx-1.8.0-linux-x64.tgz
