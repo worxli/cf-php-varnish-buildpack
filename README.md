@@ -1,6 +1,8 @@
-# PHP and Varnish in one Cloud Foundry Buildpack
+# PHP, Varnish and supervisord in one Cloud Foundry Buildpack
 
 This is a fork of the official [Cloud Foundry PHP buildpack](https://github.com/cloudfoundry/php-buildpack) and adds [Varnish](https://www.varnish-cache.org/) 3.0 to it (and currently also a more current HHVM (3.5.0) than the official buildpack). Read more about the Varnish inclusion and possibilities at [docs/varnish.md](docs/varnish.md).
+
+It also adds supervisord support. See [docs/supervisor.md](docs/supervisor.md) for mroe info.
 
 I try to keep it as close as possible to the original buildpack and merge changes from there.
 
