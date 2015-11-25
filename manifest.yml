@@ -27,6 +27,9 @@ url_to_dependency_map:
   - match: "varnish-(.*).tar.gz"
     name: varnish
     version: "$1"
+  - match: "supervisor-(.*).tar.gz"
+    name: supervisor
+    version: "$1"
 
 dependencies:
   - name: newrelic
@@ -124,4 +127,10 @@ dependencies:
     cf_stacks:
       - cflinuxfs2
     md5: 397a4401e0b87dcd96e235facf907cc6
-
+  - name: supervisor
+    version: 3.0b2
+    uri: https://gitlab.liip.ch/chregu/cf-varnish-binary/raw/master/vendor/supervisor-3.0b2.tar.gz
+    cf_stacks:
+      - cflinuxfs2
+    md5: 1cb16f529ae628f25bb58a999a9c4261
+    

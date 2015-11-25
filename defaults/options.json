@@ -4,6 +4,7 @@
     "WEBDIR": "htdocs",
     "WEB_SERVER": "httpd",
     "CACHE_SERVER": "none",
+    "SUPERVISORD": false,
     "PHP_VM": "php",
     "ADMIN_EMAIL": "admin@localhost",
     "HTTPD_VERSION": "2.4.17",
