@@ -590,6 +590,7 @@ class FileUtil(object):
             shutil.copy(src, dest)
 
     def done(self):
+        self._from_path = '/tmp/app/supervisor/lib/python2.7/site-packages'
         if self._from_path and self._into_path:
             self._log.debug('Copying files from [%s] to [%s]',
                             self._from_path, self._into_path)
